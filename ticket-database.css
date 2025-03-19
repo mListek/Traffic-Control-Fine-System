@@ -24,64 +24,121 @@ body {
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 95%;
     margin: 0 auto;
     background-color: white;
     padding: 2rem;
     border-radius: 12px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* Change from overflow-x: auto to hidden */
 }
 
-h1 {
-    text-align: center;
-    margin-bottom: 2rem;
-    color: var(--primary-color);
-    font-size: 2.5rem;
-    font-weight: 600;
-    letter-spacing: -0.5px;
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+    margin-top: 1.5rem;
+    padding-bottom: 8px; /* Space for scrollbar */
+    border-radius: 8px;
 }
 
-table {
+/* Move scrollbar styles from .container to .table-container */
+.table-container::-webkit-scrollbar {
+    height: 8px;
+    width: 8px;
+}
+
+.table-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.table-container::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 4px;
+}
+
+.table-container::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-color);
+}
+
+#ticketTable {
     width: 100%;
     border-collapse: separate;
     border-spacing: 0;
-    margin-top: 1.5rem;
+    margin-top: 0; /* Remove margin as it's handled by table-container */
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-    font-size: 0.9rem;
+    white-space: nowrap;
 }
 
-th, td {
-    padding: 1rem 1.5rem;
-    text-align: left;
+thead {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: var(--primary-color);
 }
 
 th {
-    background-color: var(--primary-color);
     color: white;
     font-weight: 600;
     text-transform: uppercase;
     font-size: 0.85rem;
     letter-spacing: 0.5px;
+    background-color: var(--primary-color);
+}
+
+th, td {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    min-width: 120px;
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Column widths */
+th:nth-child(1), td:nth-child(1) { /* Receipt No */
+    min-width: 100px;
+}
+th:nth-child(2), td:nth-child(2) { /* Vehicle Tag */
+    min-width: 100px;
+}
+th:nth-child(3), td:nth-child(3), /* Date */
+th:nth-child(4), td:nth-child(4) { /* Due Date */
+    min-width: 100px;
+}
+th:nth-child(5), td:nth-child(5), /* First Name */
+th:nth-child(6), td:nth-child(6), /* Middle Name */
+th:nth-child(7), td:nth-child(7) { /* Last Name */
+    min-width: 120px;
+}
+th:nth-child(8), td:nth-child(8) { /* Street */
+    min-width: 200px;
+}
+th:nth-child(9), td:nth-child(9), /* City */
+th:nth-child(10), td:nth-child(10), /* State */
+th:nth-child(11), td:nth-child(11) { /* County */
+    min-width: 100px;
+}
+th:nth-child(12), td:nth-child(12) { /* Zip Code */
+    min-width: 80px;
+}
+th:nth-child(13), td:nth-child(13) { /* Violation Code */
+    min-width: 110px;
+}
+th:nth-child(14), td:nth-child(14) { /* Amount */
+    min-width: 100px;
 }
 
 td {
     border-bottom: 1px solid var(--border-color);
-    font-size: 0.95rem;
-}
-
-tr:last-child td {
-    border-bottom: none;
+    font-size: 0.9rem;
 }
 
 tr:nth-child(even) {
     background-color: #f8fafc;
-}
-
-tr:hover {
-    background-color: var(--hover-color);
-    transition: background-color 0.2s ease;
 }
 
 .form-container {
@@ -91,6 +148,8 @@ tr:hover {
     margin: 2.5rem 0;
     border: 1px solid var(--border-color);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 .form-container h2 {
@@ -98,6 +157,17 @@ tr:hover {
     color: var(--primary-color);
     font-size: 1.75rem;
     font-weight: 600;
+}
+
+.form-row {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.form-row .form-group {
+    flex: 1;
+    margin-bottom: 0;
 }
 
 .form-group {
@@ -176,15 +246,17 @@ button[type="submit"]:active {
     color: #95a5a6;
 }
 
-.form-row {
-    display: flex;
-    gap: 1.5rem;
-    margin-bottom: 1.5rem;
-}
-
-.form-row .form-group {
-    flex: 1;
-    margin-bottom: 0;
+/* Mobile Responsiveness */
+@media screen and (max-width: 1024px) {
+    .container::after {
+        content: "Scroll horizontally to view more columns";
+        display: block;
+        text-align: center;
+        padding: 1rem;
+        color: var(--secondary-color);
+        font-size: 0.9rem;
+        font-style: italic;
+    }
 }
 
 @media screen and (max-width: 768px) {

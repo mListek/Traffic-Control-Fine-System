@@ -9,6 +9,7 @@ function initializeDummyData() {
             receiptNo: "TKT-001",
             vehicleTagNo: "XYZ-4567",
             date: "2023-11-01",
+            dueDate: "2023-11-15",
             firstName: "Sarah",
             middleName: "Jane",
             lastName: "Johnson",
@@ -24,6 +25,7 @@ function initializeDummyData() {
             receiptNo: "TKT-002",
             vehicleTagNo: "ABC-1234",
             date: "2023-11-02",
+            dueDate: "2023-11-16",
             firstName: "Michael",
             middleName: "Thomas",
             lastName: "Williams",
@@ -65,7 +67,7 @@ function populateTicketTable(ticketsToDisplay) {
         const row = document.createElement('tr');
         const cell = document.createElement('td');
         cell.textContent = 'No matching tickets found';
-        cell.colSpan = 13;
+        cell.colSpan = 14;
         cell.style.textAlign = 'center';
         cell.style.padding = '20px';
         row.appendChild(cell);
@@ -79,6 +81,7 @@ function populateTicketTable(ticketsToDisplay) {
             <td>${ticket.receiptNo}</td>
             <td>${ticket.vehicleTagNo}</td>
             <td>${ticket.date}</td>
+            <td>${ticket.dueDate}</td>
             <td>${ticket.firstName}</td>
             <td>${ticket.middleName || ''}</td>
             <td>${ticket.lastName}</td>
@@ -105,6 +108,7 @@ function searchTickets(query) {
             ticket.receiptNo.toLowerCase().includes(query) ||
             ticket.vehicleTagNo.toLowerCase().includes(query) ||
             ticket.date.includes(query) ||
+            ticket.dueDate.includes(query) ||
             ticket.firstName.toLowerCase().includes(query) ||
             ticket.middleName?.toLowerCase().includes(query) ||
             ticket.lastName.toLowerCase().includes(query) ||
@@ -133,6 +137,7 @@ function addTicket(ticket) {
         <td>${ticket.receiptNo}</td>
         <td>${ticket.vehicleTagNo}</td>
         <td>${ticket.date}</td>
+        <td>${ticket.dueDate}</td>
         <td>${ticket.firstName}</td>
         <td>${ticket.middleName || ''}</td>
         <td>${ticket.lastName}</td>
@@ -161,6 +166,7 @@ document.getElementById('addTicketForm').addEventListener('submit', function(e) 
         receiptNo: document.getElementById('receiptNo').value,
         vehicleTagNo: document.getElementById('vehicleTagNo').value,
         date: document.getElementById('ticketDate').value,
+        dueDate: document.getElementById('dueDate').value,
         firstName: document.getElementById('firstName').value,
         middleName: document.getElementById('middleName').value,
         lastName: document.getElementById('lastName').value,

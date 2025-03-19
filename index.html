@@ -14,28 +14,31 @@
             <input type="text" id="searchInput" placeholder="Search for tickets...">
         </div>
         
-        <table id="ticketTable">
-            <thead>
-                <tr>
-                    <th>Receipt No</th>
-                    <th>Vehicle Tag No</th>
-                    <th>Date</th>
-                    <th>First Name</th>
-                    <th>Middle Name</th>
-                    <th>Last Name</th>
-                    <th>Street</th>
-                    <th>City</th>
-                    <th>State</th>
-                    <th>County</th>
-                    <th>Zip Code</th>
-                    <th>Violation Code</th>
-                    <th>Amount</th>
-                </tr>
-            </thead>
-            <tbody id="ticketList">
-                <!-- Ticket data will be inserted here by JavaScript -->
-            </tbody>
-        </table>
+        <div class="table-container">
+            <table id="ticketTable">
+                <thead>
+                    <tr>
+                        <th>Receipt No</th>
+                        <th>Vehicle Tag No</th>
+                        <th>Date</th>
+                        <th>Due Date</th>
+                        <th>First Name</th>
+                        <th>Middle Name</th>
+                        <th>Last Name</th>
+                        <th>Street</th>
+                        <th>City</th>
+                        <th>State</th>
+                        <th>County</th>
+                        <th>Zip Code</th>
+                        <th>Violation Code</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody id="ticketList">
+                    <!-- Ticket data will be inserted here by JavaScript -->
+                </tbody>
+            </table>
+        </div>
 
         <div class="form-container">
             <h2>Add New Traffic Ticket</h2>
@@ -52,6 +55,10 @@
                     <div class="form-group">
                         <label for="ticketDate">Date:</label>
                         <input type="date" id="ticketDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="dueDate">Due Date:</label>
+                        <input type="date" id="dueDate" required>
                     </div>
                 </div>
                 
