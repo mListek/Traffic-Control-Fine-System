@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traffic Tickets System</title>
+    <link rel="stylesheet" href="ticket-database.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Traffic Tickets Database</h1>
+        
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search for tickets...">
+        </div>
+        
+        <table id="ticketTable">
+            <thead>
+                <tr>
+                    <th>Receipt No</th>
+                    <th>Vehicle Tag No</th>
+                    <th>Date</th>
+                    <th>First Name</th>
+                    <th>Middle Name</th>
+                    <th>Last Name</th>
+                    <th>Street</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>County</th>
+                    <th>Zip Code</th>
+                    <th>Violation Code</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody id="ticketList">
+                <!-- Ticket data will be inserted here by JavaScript -->
+            </tbody>
+        </table>
+
+        <div class="form-container">
+            <h2>Add New Traffic Ticket</h2>
+            <form id="addTicketForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="receiptNo">Receipt No:</label>
+                        <input type="text" id="receiptNo" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="vehicleTagNo">Vehicle Tag No:</label>
+                        <input type="text" id="vehicleTagNo" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="ticketDate">Date:</label>
+                        <input type="date" id="ticketDate" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName">First Name:</label>
+                        <input type="text" id="firstName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="middleName">Middle Name:</label>
+                        <input type="text" id="middleName">
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name:</label>
+                        <input type="text" id="lastName" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="street">Street:</label>
+                        <input type="text" id="street" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="city">City:</label>
+                        <input type="text" id="city" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="state">State:</label>
+                        <input type="text" id="state" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="county">County:</label>
+                        <input type="text" id="county" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="zipCode">Zip Code:</label>
+                        <input type="text" id="zipCode" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="violationCode">Violation Code:</label>
+                        <input type="text" id="violationCode" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="amount">Amount:</label>
+                        <input type="number" id="amount" step="0.01" min="0" required>
+                    </div>
+                </div>
+
+                <button type="submit" id="submitBtn">Add Ticket</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="ticket-database.js"></script>
+</body>
+</html>
