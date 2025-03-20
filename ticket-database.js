@@ -125,31 +125,75 @@ function searchTickets(query) {
     populateTicketTable(filteredTickets);
 }
 
+// Function to show toast notification
+function showToast(title, message, type = 'success', duration = 5000) {
+    const toastContainer = document.getElementById('toastContainer');
+    
+    // Create toast element
+    const toast = document.createElement('div');
+    toast.className = `toast ${type}`;
+    
+    // Create toast content
+    toast.innerHTML = `
+        <div class="toast-icon">
+            <svg viewBox="0 0 24 24">
+                <path d="M9,16.17L4.83,12l-1.42,1.41L9,19 21,7l-1.41-1.41L9,16.17z"/>
+            </svg>
+        </div>
+        <div class="toast-content">
+            <div class="toast-title">${title}</div>
+            <div class="toast-message">${message}</div>
+        </div>
+        <button class="toast-close">&times;</button>
+    `;
+    
+    // Add toast to container
+    toastContainer.appendChild(toast);
+    
+    // Add close button functionality
+    const closeButton = toast.querySelector('.toast-close');
+    closeButton.addEventListener('click', () => {
+        removeToast(toast);
+    });
+    
+    // Show the toast
+    setTimeout(() => {
+        toast.classList.add('show');
+    }, 10);
+    
+    // Auto remove after duration
+    if (duration) {
+        setTimeout(() => {
+            removeToast(toast);
+        }, duration);
+    }
+    
+    return toast;
+}
+
+// Function to remove toast
+function removeToast(toast) {
+    toast.classList.remove('show');
+    
+    // Wait for animation to finish before removing element
+    setTimeout(() => {
+        toast.remove();
+    }, 300);
+}
+
 // Function to add a new ticket entry
 function addTicket(ticket) {
     tickets.push(ticket);
     saveTickets(tickets);
     
-    // Add new row to table
-    const tableBody = document.getElementById('ticketList');
-    const row = document.createElement('tr');
-    row.innerHTML = `
-        <td>${ticket.receiptNo}</td>
-        <td>${ticket.vehicleTagNo}</td>
-        <td>${ticket.date}</td>
-        <td>${ticket.dueDate}</td>
-        <td>${ticket.firstName}</td>
-        <td>${ticket.middleName || ''}</td>
-        <td>${ticket.lastName}</td>
-        <td>${ticket.street}</td>
-        <td>${ticket.city}</td>
-        <td>${ticket.state}</td>
-        <td>${ticket.county}</td>
-        <td>${ticket.zipCode}</td>
-        <td>${ticket.violationCode}</td>
-        <td>${ticket.amount}</td>
-    `;
-    tableBody.appendChild(row);
+    // Refresh the table instead of just adding a row
+    populateTicketTable(tickets);
+    
+    // Show success toast notification
+    showToast(
+        'Ticket Added Successfully', 
+        `Receipt #${ticket.receiptNo} has been added to the system.`
+    );
     
     // If we have a search active, check if the new ticket matches
     const searchInput = document.getElementById('searchInput');
