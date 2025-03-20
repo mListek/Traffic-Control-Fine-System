@@ -16,7 +16,6 @@ function initializeDummyData() {
             street: "123 Main St",
             city: "New York",
             state: "NY",
-            county: "Manhattan",
             zipCode: "10001",
             violationCode: "SP-01",
             amount: "150.00"
@@ -32,7 +31,6 @@ function initializeDummyData() {
             street: "456 Oak Ave",
             city: "Los Angeles",
             state: "CA",
-            county: "Los Angeles",
             zipCode: "90001",
             violationCode: "RL-02",
             amount: "75.00"
@@ -67,7 +65,7 @@ function populateTicketTable(ticketsToDisplay) {
         const row = document.createElement('tr');
         const cell = document.createElement('td');
         cell.textContent = 'No matching tickets found';
-        cell.colSpan = 14;
+        cell.colSpan = 13;
         cell.style.textAlign = 'center';
         cell.style.padding = '20px';
         row.appendChild(cell);
@@ -88,7 +86,6 @@ function populateTicketTable(ticketsToDisplay) {
             <td>${ticket.street}</td>
             <td>${ticket.city}</td>
             <td>${ticket.state}</td>
-            <td>${ticket.county}</td>
             <td>${ticket.zipCode}</td>
             <td>${ticket.violationCode}</td>
             <td>${ticket.amount}</td>
@@ -115,7 +112,6 @@ function searchTickets(query) {
             ticket.street.toLowerCase().includes(query) ||
             ticket.city.toLowerCase().includes(query) ||
             ticket.state.toLowerCase().includes(query) ||
-            ticket.county.toLowerCase().includes(query) ||
             ticket.zipCode.toLowerCase().includes(query) ||
             ticket.violationCode.toLowerCase().includes(query) ||
             ticket.amount.toLowerCase().includes(query)
@@ -237,7 +233,6 @@ document.getElementById('addTicketForm').addEventListener('submit', function(e) 
         street: document.getElementById('street').value,
         city: document.getElementById('city').value,
         state: document.getElementById('state').value,
-        county: document.getElementById('county').value,
         zipCode: document.getElementById('zipCode').value,
         violationCode: document.getElementById('violationCode').value,
         amount: document.getElementById('amount').value

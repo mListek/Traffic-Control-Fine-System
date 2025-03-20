@@ -118,17 +118,17 @@ th:nth-child(8), td:nth-child(8) { /* Street */
     min-width: 200px;
 }
 th:nth-child(9), td:nth-child(9), /* City */
-th:nth-child(10), td:nth-child(10), /* State */
-th:nth-child(11), td:nth-child(11) { /* County */
+th:nth-child(10), td:nth-child(10) { /* State */
     min-width: 100px;
 }
-th:nth-child(12), td:nth-child(12) { /* Zip Code */
+/* County column removed */
+th:nth-child(11), td:nth-child(11) { /* Zip Code */
     min-width: 80px;
 }
-th:nth-child(13), td:nth-child(13) { /* Violation Code */
+th:nth-child(12), td:nth-child(12) { /* Violation Code */
     min-width: 110px;
 }
-th:nth-child(14), td:nth-child(14) { /* Amount */
+th:nth-child(13), td:nth-child(13) { /* Amount */
     min-width: 100px;
 }
 
