@@ -319,6 +319,36 @@ button[type="submit"]:active {
     opacity: 1;
 }
 
+/* Clear Storage Button */
+.clear-storage-container {
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.clear-storage-btn {
+    background-color: #e74c3c;
+    color: white;
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.clear-storage-btn:hover {
+    background-color: #c0392b;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.clear-storage-btn:active {
+    transform: translateY(0);
+}
+
 /* Mobile Responsiveness */
 @media screen and (max-width: 1024px) {
     .container::after {

@@ -202,6 +202,26 @@ function addTicket(ticket) {
     }
 }
 
+// Function to clear all ticket data from localStorage
+function clearAllTickets() {
+    // Clear localStorage
+    localStorage.removeItem('tickets');
+    
+    // Clear the tickets array
+    tickets = [];
+    filteredTickets = [];
+    
+    // Update the table
+    populateTicketTable();
+    
+    // Show confirmation toast
+    showToast(
+        'Data Cleared', 
+        'All tickets have been removed from the system.',
+        'success'
+    );
+}
+
 // Handle form submission
 document.getElementById('addTicketForm').addEventListener('submit', function(e) {
     e.preventDefault();
@@ -245,5 +265,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const searchInput = document.getElementById('searchInput');
     searchInput.addEventListener('input', function() {
         searchTickets(this.value);
+    });
+
+    // Add event listener for clear storage button
+    const clearStorageBtn = document.getElementById('clearStorageBtn');
+    clearStorageBtn.addEventListener('click', function() {
+        if (confirm('Are you sure you want to delete all tickets? This action cannot be undone.')) {
+            clearAllTickets();
+        }
     });
 });
