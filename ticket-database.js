@@ -19,7 +19,7 @@ function initializeDummyData() {
             county: "Manhattan",
             zipCode: "10001",
             violationCode: "SP-01",
-            amount: 150.00
+            amount: "150.00"
         },
         {
             receiptNo: "TKT-002",
@@ -35,7 +35,7 @@ function initializeDummyData() {
             county: "Los Angeles",
             zipCode: "90001",
             violationCode: "RL-02",
-            amount: 75.00
+            amount: "75.00"
         }
     ];
     
@@ -91,7 +91,7 @@ function populateTicketTable(ticketsToDisplay) {
             <td>${ticket.county}</td>
             <td>${ticket.zipCode}</td>
             <td>${ticket.violationCode}</td>
-            <td>${ticket.amount ? '$' + parseFloat(ticket.amount).toFixed(2) : ''}</td>
+            <td>${ticket.amount}</td>
         `;
         tableBody.appendChild(row);
     });
@@ -107,8 +107,8 @@ function searchTickets(query) {
         filteredTickets = tickets.filter(ticket => 
             ticket.receiptNo.toLowerCase().includes(query) ||
             ticket.vehicleTagNo.toLowerCase().includes(query) ||
-            ticket.date.includes(query) ||
-            ticket.dueDate.includes(query) ||
+            ticket.date.toLowerCase().includes(query) ||
+            ticket.dueDate.toLowerCase().includes(query) ||
             ticket.firstName.toLowerCase().includes(query) ||
             ticket.middleName?.toLowerCase().includes(query) ||
             ticket.lastName.toLowerCase().includes(query) ||
@@ -116,9 +116,9 @@ function searchTickets(query) {
             ticket.city.toLowerCase().includes(query) ||
             ticket.state.toLowerCase().includes(query) ||
             ticket.county.toLowerCase().includes(query) ||
-            ticket.zipCode.includes(query) ||
+            ticket.zipCode.toLowerCase().includes(query) ||
             ticket.violationCode.toLowerCase().includes(query) ||
-            ticket.amount.toString().includes(query)
+            ticket.amount.toLowerCase().includes(query)
         );
     }
     
@@ -147,7 +147,7 @@ function addTicket(ticket) {
         <td>${ticket.county}</td>
         <td>${ticket.zipCode}</td>
         <td>${ticket.violationCode}</td>
-        <td>${ticket.amount ? '$' + parseFloat(ticket.amount).toFixed(2) : ''}</td>
+        <td>${ticket.amount}</td>
     `;
     tableBody.appendChild(row);
     
@@ -176,7 +176,7 @@ document.getElementById('addTicketForm').addEventListener('submit', function(e) 
         county: document.getElementById('county').value,
         zipCode: document.getElementById('zipCode').value,
         violationCode: document.getElementById('violationCode').value,
-        amount: parseFloat(document.getElementById('amount').value)
+        amount: document.getElementById('amount').value
     };
     
     addTicket(ticket);
